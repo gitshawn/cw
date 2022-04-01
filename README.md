@@ -1,6 +1,6 @@
 # -= cw =-
 CloudWrangler: 
-- A CLI framework
-- set of scripts geared toward 
-  - cloud ops
-  - cluster ops
+- A CLI tool wrapping:
+  - A set of scripts geared toward:
+    - cloud ops
+    - cluster ops
