@@ -1,3 +1,12 @@
+/**
+ * AWSECSRunOnAllTasks
+ * 
+ * Runs a task and returns stdout
+ * 
+ * @argument {String} CW_VAR_1 The cluster name
+ * 
+ */
+
 import {
     ECSClient,
     ListTasksCommand,
@@ -19,12 +28,12 @@ const ecsclient = new ECSClient(awsconfig);
 
 const cwclient = new CloudWatchLogsClient(awsconfig);
 
-const commandToRun = "ls -al";
+const commandToRun = "pm2 restart all";
 
 const waitTimeBetweenTasksSeconds = 5;
 
 const params = {
-    cluster: "wheels-stg",
+    cluster: process.env.CW_VAR_1,
 };
 
 const run = async () => {
@@ -88,3 +97,5 @@ const run = async () => {
 }
 
 run();
+
+//export default function AWSECSRunOnAllTasks() { run(); }
