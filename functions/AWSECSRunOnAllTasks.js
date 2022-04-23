@@ -1,9 +1,17 @@
 /**
  * AWSECSRunOnAllTasks
  * 
- * Runs a task and returns stdout
+ * Takes a cluster name and:
+ * - Enumerates the active tasks
+ * - For each task:
+ *   - Utilizes ECS Exec to run a command on the task
+ *   - Waits for the command to complete
+ *   - echo's the logs from the command execution
+ *   - Waits for x number of seconds
+ *   - Runs the command on the next task
  * 
- * @argument {String} CW_VAR_1 The cluster name
+ * @var {String} CW_VAR_1 The cluster name
+ * @var {String} CW_VAR_2 The command to run
  * 
  */
 
@@ -28,12 +36,13 @@ const ecsclient = new ECSClient(awsconfig);
 
 const cwclient = new CloudWatchLogsClient(awsconfig);
 
-const commandToRun = "pm2 restart all";
+//const commandToRun = "pm2 restart all";
 
 const waitTimeBetweenTasksSeconds = 5;
 
 const params = {
     cluster: process.env.CW_VAR_1,
+    commandToRun: process.env.CW_VAR_2,
 };
 
 const run = async () => {
@@ -52,7 +61,7 @@ const run = async () => {
                 new ExecuteCommandCommand({
                     cluster: params.cluster,
                     task: taskToRunOn,
-                    command: commandToRun,
+                    command: params.commandToRun,
                     interactive: true 
                 }))
 
