@@ -1,15 +1,17 @@
 /**
  * AWSECSWrangleASG
  * 
- * Takes a cluster name and:
- * - Discerns it's default capacity provider
+ * Takes a cluster name, (optionally a capacity provider) and:
+ * - Discerns it's default capacity provider; this will be used if capacity provider is not specified
  * - If it is an EC2 backed auto scaling group it will:
  *   - Evaluate all of the instances capacity
  *   - If it sees an opportunity to remove an EC2 instance from the cluster
  *   - (Without changing the mix of containers running on the cluster)
- *   - It will gracefully remove and terminate that instance
+ *   - It will gracefully drain and terminate that instance
  * 
- * @var {String} CW_VAR_1 The cluster name
+ * @var {String} CW_VAR_1 Region
+ * @var {String} CW_VAR_2 Cluster name
+ * @var {String} [CW_VAR_3] Capacity Provider
  * 
  */
 import {
