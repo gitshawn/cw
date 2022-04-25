@@ -4,9 +4,9 @@
  * Takes a cluster name, (optionally a capacity provider) and:
  * - Discerns it's default capacity provider; this will be used if capacity provider is not specified
  * - If it is an EC2 backed auto scaling group it will:
- *   - Evaluate all of the instances capacity
- *   - If it sees an opportunity to remove an EC2 instance from the cluster
- *   - (Without changing the mix of containers running on the cluster)
+ *   - Evaluate all of the instances capacity in the ASG
+ *   - If it sees an opportunity to remove an EC2 instance from the ASG,
+ *   - without changing the quantity and type of tasks running on the ASG
  *   - It will gracefully drain and terminate that instance
  * 
  * @var {String} CW_VAR_1 Region
