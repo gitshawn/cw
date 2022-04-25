@@ -38,7 +38,7 @@ const params = {
 const ecsclient = new ECSClient(params);
 const asgclient = new AutoScalingClient(params);
 
-const run = async () => {
+export const run = async () => {
 
     try {
         // Get the active containerInstanceArns given the cluster name
@@ -154,5 +154,3 @@ const run = async () => {
     }
 
 }
-
-run();
