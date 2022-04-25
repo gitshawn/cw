@@ -33,6 +33,7 @@ const run = async () => {
     
         // Run the function and wait
         const functionToRun = await import(`./functions/${functionName}.js`);
+        await functionToRun.run();
 
         } catch (err) {
             console.log("Error", err);
