@@ -152,5 +152,10 @@ export const run = async () => {
     } catch (err) {
         console.log("Error", err);
     }
+    
+    // Return a promise for Lambda
+    return new Promise(x => {
+        setTimeout(() => x(), 1000)
+    });
 
 }
