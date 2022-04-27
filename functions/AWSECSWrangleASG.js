@@ -30,17 +30,19 @@ const drainingInstanceTimeoutSeconds = 60;
 
 const reWrangleTimeoutSeconds = 10;
 
-const params = {
-    region: process.env.CW_VAR_1 || "us-west-2",
-    cluster: process.env.CW_VAR_2 || "engine-stg",
-    capacityprovider: process.env.CW_VAR_3 || ""
-};
-const ecsclient = new ECSClient(params);
-const asgclient = new AutoScalingClient(params);
-
-export const run = async () => {
+export async function run() {
 
     try {
+        
+        const params = {
+            region: arguments[0] || "",
+            cluster: arguments[1] || "",
+            capacityprovider: arguments[2] || ""
+        };
+
+        const ecsclient = new ECSClient(params);
+        const asgclient = new AutoScalingClient(params);
+        
         // Get the active containerInstanceArns given the cluster name
         const containerInstances = await ecsclient.send(
             new ListContainerInstancesCommand({
@@ -150,7 +152,7 @@ export const run = async () => {
         }
     
     } catch (err) {
-        console.log("Error", err);
+        console.error("Error", err);
     }
     
     // Return a promise for Lambda
