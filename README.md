@@ -10,7 +10,7 @@ Via the CLI:
 
 `node cw AWSECSWrangleASG us-west-2 cluster01`
 
-As an ES6+ javascript module:
+As an ES6+ module:
 
 ```
 const wrangle = await import('cw/functions/AWSECSWrangleASG.js');
