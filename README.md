@@ -1,10 +1,10 @@
-# -= cw =-
+# -= cw.js =-
 CloudWrangler is: 
 - A set of scripts "Functions" geared toward:
   - cloud ops
   - cluster ops
 ## Running
-CloudWrangler Functions can be run via the CLI or independantly interface with your code.
+CloudWrangler Functions are intentionally self contained, so they can be run via the CLI or independently interface with your code.
 
 Via the CLI:
 
