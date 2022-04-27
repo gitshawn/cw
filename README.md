@@ -31,4 +31,4 @@ sls deploy --stage prod
 This function takes a cluster name and via ECS Exec runs a cli command on all of the active tasks in said cluster. It returns the console output from each execution.
 
 ### AWSECSWrangleASG
-As Auto Scaling Groups grow and shrink, they can get into a non-optimal state, whereby there are too many EC2 instances compared to the tasks demand. AWSWrangleASG will analyze an ECS cluster, a given or default ASG, and gracefully downsize that ASG if possible.
+As Auto Scaling Groups grow and shrink, they can get into a non-optimal state, whereby there are too many EC2 instances warranted for the tasks demand. `AWSWrangleASG` will analyze an ECS cluster, a given or default ASG, and gracefully downsize that ASG if possible.
