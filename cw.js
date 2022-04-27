@@ -24,7 +24,7 @@ const run = async () => {
         // Check to see if there are any arguments to cw.js
         if (params == '') throw "No arguments provided. Please provide at least a function name to execute.";
 
-        // Parse the arguments to cw.js, the first one is the functionName, the others are set as env vars
+        // Parse the arguments to cw.js, the first one is the functionName, the others are args to the function
         let functionName = params[0];
         const args = params.slice(1);
 
