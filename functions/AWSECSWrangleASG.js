@@ -6,8 +6,9 @@
  * - If it is an EC2 backed auto scaling group it will:
  *   - Evaluate all of the instances capacity in the ASG
  *   - If it sees an opportunity to remove an EC2 instance from the ASG,
- *   - without changing the quantity and type of tasks running on the ASG
+ *   - (without changing the quantity and type of tasks running on the ASG)
  *   - It will gracefully drain and terminate that instance
+ *   - (and downsize the ASG)
  * 
  * @var {String} CW_VAR_1 Region
  * @var {String} CW_VAR_2 Cluster name
