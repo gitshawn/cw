@@ -20,8 +20,10 @@ await wrangle.run('us-east-1', 'cluster01');
 There is an example Lambda cron job, utilizing Serverless framework. To deploy:
 
 ```
-cd serverlessExample
 npm install -g serverless
+
+cd serverlessExample
+npm install
 sls deploy --stage prod
 ```
 
