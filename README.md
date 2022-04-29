@@ -6,18 +6,18 @@ CloudWrangler is:
 ## -= Running =-
 CloudWrangler Functions are intentionally self contained, so they can be run via the CLI or independently interface with your code.
 
-Via the CLI:
+- Via the CLI:
 
 `node cw AWSECSWrangleASG us-west-2 cluster01`
 
-As an ES6+ module:
+- As an ES6+ module:
 
 ```
 const wrangle = await import('cw/functions/AWSECSWrangleASG.js');
 await wrangle.run('us-east-1', 'cluster01');
 ```
 
-There is an example Lambda cron job, utilizing Serverless framework. To deploy:
+- As a Lambda cron job, utilizing Serverless framework. To deploy:
 
 ```
 npm install -g serverless
