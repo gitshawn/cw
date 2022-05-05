@@ -1,0 +1,37 @@
+service: wrangleASG
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ${opt:region}
+  stage: ${opt:stage}
+  deploymentBucket: [s3-serverless-bucket]
+  versionFunctions: false
+  role: [aRoleGoesHere]
+  timeout: 30
+  logRetentionInDays: 30
+  vpc:
+    subnetIds:
+      - [LambdaSubnetA]
+      - [LambdaSubnetB]
+    securityGroupIds:
+      - [LambdaSecurityGroupId]
+
+custom:
+  cronTime:
+    # Every 6th hour
+    prod: 0 */6 ? * * *
+
+functions:
+  wrangleCron:
+    handler: index.cron
+    description: Wrangle ASG EC2 Instances (${self:provider.stage})
+    events:
+      - schedule:
+          name: drive-wrangleASG-${self:provider.stage}-cron
+          description: Wrangle ASG EC2 Instances (${self:provider.stage})
+          rate: cron(${self:custom.cronTime.${self:provider.stage}})
+          enabled: true
+
+resources:
+  Description: Wrangle Auto Scaling Group EC2 instances 
